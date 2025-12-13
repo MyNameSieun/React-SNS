@@ -1,4 +1,6 @@
+// src/services/auth.ts
 import { supabase } from "@/lib/supabase";
+import type { Provider } from "@supabase/supabase-js";
 export const signUp = async ({
   email,
   password,
@@ -12,10 +14,7 @@ export const signUp = async ({
     password,
   });
 
-  if (error) {
-    console.error(error.message);
-    throw error;
-  }
+  if (error) throw error;
   return data;
 };
 
@@ -26,16 +25,20 @@ export const signInWithPassword = async ({
   email: string;
   password: string;
 }) => {
-  // 수퍼베이스 클라이언트활용해 로그인 요청
-
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
 
-  if (error) {
-    console.error(error.message);
-    throw error;
-  }
+  if (error) throw error;
+  return data;
+};
+
+export const signInWithOAuth = async (provider: Provider) => {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider,
+  });
+
+  if (error) throw error;
   return data;
 };

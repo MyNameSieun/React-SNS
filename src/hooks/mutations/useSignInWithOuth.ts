@@ -1,11 +1,11 @@
-// src/hooks/mutations/useSignUp.ts
-import { signUp } from "@/services/auth";
+// src/hooks/mutations/useSignInWithOuth.ts
+import { signInWithOAuth } from "@/services/auth";
 import type { UseMutationCallback } from "@/types/useMutationCallback";
 import { useMutation } from "@tanstack/react-query";
 
-export const useSignUp = (callbacks: UseMutationCallback) => {
+export const useSignInWithOuth = (callbacks: UseMutationCallback) => {
   return useMutation({
-    mutationFn: signUp,
+    mutationFn: signInWithOAuth,
     onError: (error) => {
       if (callbacks?.onError) callbacks.onError(error);
     },

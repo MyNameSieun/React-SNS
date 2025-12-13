@@ -2,6 +2,7 @@
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Router } from "./shared/Router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "sonner";
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -9,6 +10,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
+      <Toaster />
       <Router />
     </QueryClientProvider>
   );
