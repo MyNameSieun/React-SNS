@@ -1,6 +1,8 @@
 // src/shared/Router.tsx
 
 import GlobalLayout from "@/layouts/GlobalLayout";
+import { GuestOnlyLayout } from "@/layouts/GuestOnlyLayout";
+import { MemberOnlyLayout } from "@/layouts/MemberOnlyLayout";
 import ForgetPasswordPage from "@/pages/ForgetPasswordPage";
 import IndexPage from "@/pages/IndexPage";
 import PostDetailPage from "@/pages/PostDetailPage";
@@ -15,15 +17,21 @@ export const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<GlobalLayout />}>
-          <Route path="/sign-in" element={<SignInPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
-          <Route path="/forget-password" element={<ForgetPasswordPage />} />
+          {/* 비로그인 전용 */}
+          <Route element={<GuestOnlyLayout />}>
+            <Route path="/sign-in" element={<SignInPage />} />
+            <Route path="/sign-up" element={<SignUpPage />} />
+            <Route path="/forget-password" element={<ForgetPasswordPage />} />
+          </Route>
 
-          <Route path="/" element={<IndexPage />} />
-          <Route path="/post/:postId" element={<PostDetailPage />} />
-          <Route path="/profile/:userId" element={<ProfileDetailPage />} />
-          <Route path="/reset-password" element={<ResetPasswordPage />} />
-          <Route path="*" element={<Navigate to={"/"} />} />
+          {/* 로그인 필수 */}
+          <Route element={<MemberOnlyLayout />}>
+            <Route path="/" element={<IndexPage />} />
+            <Route path="/post/:postId" element={<PostDetailPage />} />
+            <Route path="/profile/:userId" element={<ProfileDetailPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="*" element={<Navigate to={"/"} />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
