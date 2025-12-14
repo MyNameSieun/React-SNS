@@ -1,4 +1,4 @@
-// src/store/section.ts
+// src/store/session.ts
 import type { Session } from "@supabase/supabase-js"; // import 주의
 import { create } from "zustand";
 import { combine, devtools } from "zustand/middleware";

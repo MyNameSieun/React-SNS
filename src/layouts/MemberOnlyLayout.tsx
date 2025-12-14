@@ -1,5 +1,5 @@
 // src/layouts/MemberOnlyLayout.tsx
-import { useSession } from "@/store/secction";
+import { useSession } from "@/store/session";
 import { Navigate, Outlet } from "react-router";
 
 export const MemberOnlyLayout = () => {

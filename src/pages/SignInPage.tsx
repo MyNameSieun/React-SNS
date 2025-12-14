@@ -91,8 +91,13 @@ const SignInPage = () => {
           </Button>
         </div>
 
-        <p className="text-muted-foreground mx-auto text-sm underline">
-          <Link to={"/sign-up"}>계정이 없으신가요? 회원가입</Link>
+        <p className="text-muted-foreground flex flex-col gap-2 text-sm">
+          <Link className="hover:underline" to={"/sign-up"}>
+            계정이 없으신가요? 회원가입
+          </Link>
+          <Link className="hover:underline" to={"/forget-password"}>
+            비밀번호를 잊으셨나요?
+          </Link>
         </p>
       </form>
     </main>
